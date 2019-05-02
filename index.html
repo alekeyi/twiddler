@@ -7,20 +7,54 @@
   <body>
     <script>
 
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+      $(document).ready(function(){ // we are in a ready state
+        var display = function() {
+          var $body = $('body'); // create a reference to the BODY dom object
+          $body.html(''); // replace ALL html elements with empty string
+
+          // display new tweets automatically or w/ button
+          // DONE: display timestamp of tweet
+          // ability to see all tweets of particular user
+          // new tweets to appear at top
+          /*
+          var displayTweet = function() {
+            return streams.home;
+          }
+          */
+
+          // var index = streams.home.length - 1;
+          //while(index >= 0){
+          /*for (var i = 0; i < streams.home.length; i++) {
+            var displayNewTweet = function() {
+
+              var tweet = streams.home[index];
+              var $tweet = $('<div></div>');
+              $tweet.text('@' + tweet.user + ': ' + tweet.message + '\n created at: ' + tweet.created_at);
+              $tweet.appendTo($body);
+              //setTimeout(displayNewTweet, Math.random() * 1500);
+              //index -= 1;
+            }
+          }
+          displayNewTweet();*/
+        // setTimeout(function(){ alert( new random tweet ) }, 1000);
+        // setTimeout(function(){display new tweets}, (Math.floor(Math.random() * 3000));
 
         var index = streams.home.length - 1;
         while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + '\n created at: ' + tweet.created_at);
+            $tweet.appendTo($body);
+            index -= 1;
+
+          };
         }
 
+        display();
+
+        // var autoDisplay = setInterval(display, 5000);
       });
+
 
     </script>
   </body>
